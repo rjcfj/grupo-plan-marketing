@@ -2,7 +2,7 @@
 <template>
   <q-page padding>
     <q-form @submit="handleSubmit()" class="row q-col-gutter-sm">
-      <q-input filled v-model="form.nome" label="Nome *" lazy-rules
+      <q-input filled v-model="form.nome" label="Nome *" lazy-rules maxlength="255"
         :rules="[val => val && val.length > 0 || 'Digite no mínimo 1 e no máximo 255 caracteres']" class="col-lg-6 col-xs-12"
         type="text" />
       <div class="col-12 q-gutter-sm">

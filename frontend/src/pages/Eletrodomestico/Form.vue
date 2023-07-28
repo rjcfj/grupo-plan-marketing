@@ -2,13 +2,13 @@
 <template>
   <q-page padding>
     <q-form @submit="handleSubmit()" class="row q-col-gutter-sm">
-      <q-input filled v-model="form.nome" label="Nome *" lazy-rules
+      <q-input filled v-model="form.nome" label="Nome *" lazy-rules maxlength="255"
         :rules="[val => val && val.length > 0 || 'Digite no mínimo 1 e no máximo 255 caracteres']"
         class="col-lg-6 col-xs-12" type="text" />
-      <q-input filled v-model="form.descricao" label="Descrição *" lazy-rules
+      <q-input filled v-model="form.descricao" label="Descrição *" lazy-rules maxlength="255"
         :rules="[val => val && val.length > 0 || 'Digite no mínimo 1 e no máximo 255 caracteres']"
         class="col-lg-6 col-xs-12" type="text" />
-      <q-input filled v-model="form.tensao" label="Tensão *" lazy-rules
+      <q-input filled v-model="form.tensao" label="Tensão *" lazy-rules maxlength="3" mask="###"
         :rules="[val => val && val.length > 2 || 'Digite no mínimo 3 caracteres']" class="col-lg-6 col-xs-12"
         type="text" />
       <q-select filled v-model="form.id_marca" :options="optionsMarca" label="Marca *" emit-value map-options
