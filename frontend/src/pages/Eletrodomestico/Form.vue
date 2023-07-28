@@ -35,7 +35,7 @@ export default defineComponent({
       nome: '',
       descricao: '',
       tensao: '',
-      id_marca: 0,
+      id_marca: '',
 
     });
     const optionsMarca = ref([]);
@@ -101,7 +101,6 @@ export default defineComponent({
       } else {
         sendObject.id_marca = form.value.id_marca.value;
       }
-      console.log(sendObject);
       try {
         const { data } = await api.put(`eletrodomestico/${route.params.id}`, sendObject);
         $q.notify({ message: 'Eletrodomestico atualizado', icon: 'check', color: 'positive' });
@@ -122,7 +121,7 @@ export default defineComponent({
       } else {
         post(form);
         $q.notify({ message: 'Eletrodomestico criado', icon: 'check', color: 'positive' });
-        router.push({ name: 'home' });
+        router.push({ name: 'eletrodomestico' });
       }
     };
 
