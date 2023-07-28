@@ -48,8 +48,8 @@ export default defineComponent({
     const getData = async () => {
       try {
         const { model, query } = $route.query;
-        const { data } = await api.get(`marca/?${model}=${query}`);
-        marcas.value = data.data;
+        const { data } = await api.get(`marca?${model}=${query}`);
+        marcas.value = data.list.data;
       } catch (error) {
         $q.notify({ message: 'Marca de erro não encontrado', icon: 'times', color: 'negative' });
       }

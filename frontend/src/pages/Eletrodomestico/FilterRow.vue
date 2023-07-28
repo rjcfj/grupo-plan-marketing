@@ -3,6 +3,16 @@
   <q-page padding>
     <div class="q-pa-md">
       <q-table title="Eletrodomesticos" :rows="eletrodomesticos" :columns="columns" row-key="name">
+        <template v-slot:body-cell-marca="props">
+        <q-td :props="props" class="q-gutter-sm">
+          {{ props.row.marca.nome }}
+        </q-td>
+      </template>
+      <template v-slot:body-cell-tensao="props">
+        <q-td :props="props" class="q-gutter-sm">
+          {{ props.row.tensao }} V
+        </q-td>
+      </template>
         <template v-slot:body-cell-actions="props">
           <q-td :props="props" class="q-gutter-sm">
             <q-btn icon="edit" color="info" dense size="sm" @click="handleEdit(props.row.id)" />
@@ -34,7 +44,11 @@ export default defineComponent({
       }, {
         name: 'nome', field: 'nome', label: 'Nome', sortable: true, align: 'left',
       }, {
-        name: 'actions', field: 'actions', label: 'Actions', align: 'right',
+        name: 'marca', field: 'marca', label: 'Marca', sortable: true, align: 'left',
+      }, {
+        name: 'tensao', field: 'tensao', label: 'Tensão', sortable: true, align: 'left',
+      }, {
+        name: 'actions', field: 'actions', label: 'Ação', align: 'left',
       },
     ];
     const $router = useRouter();
@@ -48,8 +62,8 @@ export default defineComponent({
     const getData = async () => {
       try {
         const { model, query } = $route.query;
-        const { data } = await api.get(`eletrodomestico/?${model}=${query}`);
-        eletrodomesticos.value = data.data;
+        const { data } = await api.get(`eletrodomestico?${model}=${query}`);
+        eletrodomesticos.value = data.list.data;
       } catch (error) {
         $q.notify({ message: 'Eletrodomestico de erro não encontrado', icon: 'times', color: 'negative' });
       }

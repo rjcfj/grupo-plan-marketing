@@ -7,7 +7,7 @@
         type="text" />
       <div class="col-12 q-gutter-sm">
         <q-btn label="Salvar" type="submit" color="primary" class="float-right" icon="save" @submit="handleSubmit()" />
-        <q-btn label="Cancelar" color="white" class="float-right" text-color="primary" :to="{ name: 'marca' }" />
+        <q-btn label="Voltar" color="white" class="float-right" text-color="primary" :to="{ name: 'marca' }" />
       </div>
     </q-form>
   </q-page>

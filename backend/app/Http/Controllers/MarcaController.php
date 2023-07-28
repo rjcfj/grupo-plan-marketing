@@ -11,9 +11,21 @@ class MarcaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $id = $request->input('id', null);
+        $nome = $request->input('nome', null);
+
         $list = Marca::paginate(15);
+
+        if ($id) {
+            $list = Marca::where('id', $id)->paginate(15);
+        }
+
+        if ($nome) {
+            $list = Marca::where('nome', 'like', "%$nome%")->paginate(15);
+        }
 
         return response()->json([
             'status' => true,

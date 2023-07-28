@@ -11,9 +11,30 @@ class EletrodomesticoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $id = $request->input('id', null);
+        $nome = $request->input('nome', null);
+        $descricao = $request->input('descricao', null);
+        $tensao = $request->input('tensao', null);
+
         $list = Eletrodomestico::with('marca')->paginate(15);
+
+        if ($id) {
+            $list = Eletrodomestico::with('marca')->where('id', $id)->paginate(15);
+        }
+
+        if ($nome) {
+            $list = Eletrodomestico::with('marca')->where('nome', 'like', "%$nome%")->paginate(15);
+        }
+
+        if ($descricao) {
+            $list = Eletrodomestico::with('marca')->where('descricao', 'like', "%$descricao%")->paginate(15);
+        }
+
+        if ($tensao) {
+            $list = Eletrodomestico::with('marca')->where('tensao', 'like', "%$tensao%")->paginate(15);
+        }
 
         return response()->json([
             'status' => true,
@@ -66,7 +87,7 @@ class EletrodomesticoController extends Controller
      */
     public function show($id)
     {
-        $list = Eletrodomestico::findOrFail($id);
+        $list = Eletrodomestico::with('marca')->findOrFail($id);
         return response()->json([
             'list' => $list,
         ]);

@@ -3,9 +3,9 @@
   <div class="q-pa-md">
     <q-form @submit="handleFilter(form.field, form.query)"
       class="row q-col-gutter-sm justify-center align-center q-mb-md">
-      <q-select outlined v-model="form.field" :options="selectOptions" emit-value label="Escolha um filtro"
+      <q-select outlined dense v-model="form.field" :options="selectOptions" emit-value label="Escolha um filtro"
         class="col-lg-5 col-xs-12" type="text" />
-      <q-input filled v-model="form.query" label="Digite" class="col-lg-5 col-xs-12" />
+      <q-input filled dense v-model="form.query" label="Digite" class="col-lg-5 col-xs-12" />
       <div class="row align-center  col-lg-2 col-xs-12">
         <q-btn label="Filtro" type="submit" color="primary" style="height: 40px;" />
       </div>
@@ -14,6 +14,16 @@
       <template v-slot:top>
         <q-space />
         <q-btn color="primary" label="Adicionar" :to="{ name: 'formEletrodomestico' }" />
+      </template>
+      <template v-slot:body-cell-marca="props">
+        <q-td :props="props" class="q-gutter-sm">
+          {{ props.row.marca.nome }}
+        </q-td>
+      </template>
+      <template v-slot:body-cell-tensao="props">
+        <q-td :props="props" class="q-gutter-sm">
+          {{ props.row.tensao }} V
+        </q-td>
       </template>
       <template v-slot:body-cell-actions="props">
         <q-td :props="props" class="q-gutter-sm">
@@ -45,12 +55,18 @@ export default defineComponent({
       }, {
         name: 'nome', field: 'nome', label: 'Nome', sortable: true, align: 'left',
       }, {
-        name: 'actions', field: 'actions', label: 'Actions', align: 'right',
+        name: 'marca', field: 'marca', label: 'Marca', sortable: true, align: 'left',
+      }, {
+        name: 'tensao', field: 'tensao', label: 'Tensão', sortable: true, align: 'left',
+      }, {
+        name: 'actions', field: 'actions', label: 'Ação', align: 'left',
       },
     ];
     const selectOptions = [
       { label: 'Código', value: 'id', type: 'number' },
       { label: 'Nome', value: 'nome', type: 'text' },
+      { label: 'Descrição', value: 'descricao', type: 'text' },
+      { label: 'Tensão', value: 'tensao', type: 'text' },
     ];
     const $q = useQuasar();
     const router = useRouter();
