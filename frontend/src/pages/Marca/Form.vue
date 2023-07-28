@@ -71,7 +71,7 @@ export default defineComponent({
         try {
           await update(form);
         } catch (error) {
-          $q.notify({ message: 'Erro Marca não atualizado', icon: 'times', color: 'negative' });
+          $q.notify({ message: 'Erro Marca não atualizado', icon: 'close', color: 'negative' });
         }
       } else {
         post(form);

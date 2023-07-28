@@ -95,7 +95,7 @@ export default defineComponent({
           await getData();
         });
       } catch (error) {
-        $q.notify({ message: 'Erro ao excluir marca', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Erro ao excluir marca', icon: 'close', color: 'negative' });
       }
     };
 

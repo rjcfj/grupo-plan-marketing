@@ -111,7 +111,7 @@ export default defineComponent({
           await getData();
         });
       } catch (error) {
-        $q.notify({ message: 'Erro ao excluir Eletrodomestico', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Erro ao excluir Eletrodomestico', icon: 'close', color: 'negative' });
       }
     };
 

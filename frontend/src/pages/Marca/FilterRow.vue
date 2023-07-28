@@ -51,7 +51,7 @@ export default defineComponent({
         const { data } = await api.get(`marca?${model}=${query}`);
         marcas.value = data.list.data;
       } catch (error) {
-        $q.notify({ message: 'Marca de erro não encontrado', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Marca de erro não encontrado', icon: 'close', color: 'negative' });
       }
     };
 
@@ -79,7 +79,7 @@ export default defineComponent({
           $router.push({ name: 'marca' });
         });
       } catch (error) {
-        $q.notify({ message: 'Erro ao excluir marca', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Erro ao excluir marca', icon: 'close', color: 'negative' });
       }
     };
 

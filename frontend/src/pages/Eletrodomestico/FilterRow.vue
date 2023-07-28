@@ -65,7 +65,7 @@ export default defineComponent({
         const { data } = await api.get(`eletrodomestico?${model}=${query}`);
         eletrodomesticos.value = data.list.data;
       } catch (error) {
-        $q.notify({ message: 'Eletrodomestico de erro não encontrado', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Eletrodomestico de erro não encontrado', icon: 'close', color: 'negative' });
       }
     };
 
@@ -93,7 +93,7 @@ export default defineComponent({
           $router.push({ name: 'eletrodomestico' });
         });
       } catch (error) {
-        $q.notify({ message: 'Erro ao excluir Eletrodomestico', icon: 'times', color: 'negative' });
+        $q.notify({ message: 'Erro ao excluir Eletrodomestico', icon: 'close', color: 'negative' });
       }
     };
 

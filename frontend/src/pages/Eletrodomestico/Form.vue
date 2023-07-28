@@ -116,7 +116,7 @@ export default defineComponent({
         try {
           await update(form);
         } catch (error) {
-          $q.notify({ message: 'Erro Eletrodomestico não atualizado', icon: 'times', color: 'negative' });
+          $q.notify({ message: 'Erro Eletrodomestico não atualizado', icon: 'close', color: 'negative' });
         }
       } else {
         post(form);
